@@ -1,26 +1,30 @@
 # Terraform AWS Monthly Budget Tracker
 
-This Terraform module provisions a monthly budget for your AWS account to help monitor and control costs.
+This project uses Terraform to automatically create and manage an AWS account-level monthly budget. It sets a hard cost limit and allows for tracking spend via the AWS Budgets service, helping you stay on top of monthly cloud costs with automation and minimal manual effort.
 
-## 🚀 Features
+---
 
-- Automatically creates an AWS Budgets resource
-- Sets a monthly spending limit (e.g. `$10/month`)
-- Tracks actual spend and triggers notifications (if configured)
-- Easily customizable budget amount and time period
+## 🛠 What This Does
 
-## 📄 Requirements
+- Provisions an AWS Budget resource using the AWS Budgets API
+- Tracks monthly spend against a defined limit
+- Can optionally be configured to send alerts via SNS or email (not included here, but extensible)
+- Uses Terraform for repeatable infrastructure-as-code budget management
 
-- Terraform >= 1.0
-- AWS account credentials configured
+---
 
-## 📦 Usage
+## ⚙️ Requirements
 
-```hcl
-module "aws_budget" {
-  source = "./budget"
+- AWS CLI credentials set (`aws configure`)
+- Terraform CLI installed (v1.0+ recommended)
+- AWS Identity with permissions to manage `budgets.amazonaws.com`
+- Terraform backend initialized (`terraform init`)
 
-  budget_limit = 10
-  time_unit    = "MONTHLY"
-  budget_name  = "Terraform Monthly Budget"
-}
+---
+
+## ▶️ Deployment
+
+- Clone this repository
+- Initialize, Validate and Plan Terraform
+- Apply Terraform
+
